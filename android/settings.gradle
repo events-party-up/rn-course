@@ -1,0 +1,5 @@
+
+
+rootProject.name = 'rncourse'
+
+include ':app'
