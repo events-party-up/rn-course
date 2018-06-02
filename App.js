@@ -3,13 +3,14 @@ import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
 
 import PlaceInput from './src/components/PlaceInput/PlaceInput';
 import PlaceList from './src/components/PlaceList/PlaceList';
-
+import PlaceDetail from './src/components/PlaceDetail/PlaceDetail';
 import placeImage from './src/assets/beautiful-place.jpg';
 
 export default class App extends React.Component {
 
   state = {
-    places: []
+    places: [],
+    selectedPlace: null
   }
 
   placeAddedHandler = placeName => {
@@ -18,28 +19,47 @@ export default class App extends React.Component {
         places: prevState.places.concat({
           key: Math.random().toString(),
           name: placeName,
-          image: placeImage
+          image: {
+            uri: 'https://www.nps.gov/common/uploads/grid_builder/pwr/crop16_9/2A84C724-1DD8-B71B-0B0F4361A736E640.jpg?width=950&quality=90&mode=crop'
+          }
         })
       } 
     });
   }
 
-  placeDeletedHandler = key => {
+  placeSelectedHandler = key => {
+    this.setState(prevState => {
+      return {
+        selectedPlace: prevState.places.find((place) => {
+          return place.key === key;
+        })
+      }
+    });
+    
+  }
+
+  placeDeleted = () => {
     this.setState(prevState => {
       return {
         places: prevState.places.filter((place) => {
-          return place.key !== key;
-        })
+          return place.key !== prevState.selectedPlace.key;
+        }),
+        selectedPlace: null
       }
     })
+  }
+
+  modalClosed = () => {
+    this.setState({selectedPlace: null})
   }
 
   render() {
     
     return (
       <View style={styles.container}>
+        <PlaceDetail onItemDeleted={this.placeDeleted} onModalClosed={this.modalClosed} selectedPlace={this.state.selectedPlace}/>
         <PlaceInput onPlaceAdded={this.placeAddedHandler}/>
-        <PlaceList places={this.state.places} onItemDeleted={this.placeDeletedHandler}/>
+        <PlaceList places={this.state.places} onItemSelected={this.placeSelectedHandler}/>
       </View>
       
     );
