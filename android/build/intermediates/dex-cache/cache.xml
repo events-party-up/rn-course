@@ -48,6 +48,15 @@
     </item>
     <item
         is-multidex="false"
+        jar="/home/bitmystic/code/rn-course/android/app/build/intermediates/exploded-aar/rncourse/react-native-vector-icons/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5e8ab25e82aeac62f0f98ad05caaa49a5821c499">
+        <dex dex="/home/bitmystic/code/rn-course/android/app/build/intermediates/pre-dexed/debug/rncourse-react-native-vector-icons-unspecified_5752b1970fce38eb247c0215aebbbada019a7fa5.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/home/bitmystic/code/rn-course/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
         jumboMode="false"
         optimize="true"
