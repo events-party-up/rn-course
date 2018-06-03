@@ -9,9 +9,10 @@ import placeImage from './src/assets/beautiful-place.jpg';
 
 class App extends React.Component {
 
-
   placeAddedHandler = placeName => {
     this.props.onAddPlace(placeName);
+    console.log('Place added.');
+    
   }
 
   placeSelectedHandler = key => {
