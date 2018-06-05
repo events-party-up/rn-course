@@ -41,10 +41,16 @@ const startTabs = () => {
           }
         }
       ],
+      tabsStyle: {
+        tabBarSelectedButtonColor: 'orange' // ios
+      },
       drawer: {
         left: {
           screen: 'awesome-places.SideDrawerScreen'
         }
+      },
+      appStyle: {
+        tabBarSelectedButtonColor: 'orange' // android
       }
     });
   });
